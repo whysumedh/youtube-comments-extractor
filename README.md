@@ -1,7 +1,9 @@
 # youtube-comments-extractor
 A Simple Flask App to extract comments of a channel / video (with Channel ID/ Video ID) with an API key for YouTube Data v3
 
-Pre-Requisites: Anaconda Jupyter Notebook VS Code
+Pre-Requisites: 
+Anaconda 
+VS Code
 
 Download the project file from the repo to your local
 
