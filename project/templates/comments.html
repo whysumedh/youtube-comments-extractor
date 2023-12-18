@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>YouTube Comments</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <div class="comments-container">
+    <h1>YouTube Comments</h1>
+    <div class="user-avatar">
+    </div>
+    <form action="/get_comments" method="post">
+      <label for="video_id">Enter Video ID:</label>
+      <input type="text" id="video_id" name="video_id">
+      <label for="api_key">Enter API Key:</label>
+      <input type="text" id="api_key" name="api_key">
+      <button type="submit">Fetch Comments by Video ID</button>
+    </form>
+    
+    <h2>YouTube Video ID is the alphanumeric code after "watch?v=" in every youtube video link</h2>
+
+    <h1>Channel Comments</h1>
+    <form action="/get_channel_comments" method="post">
+      <label for="channel_id">Enter Channel ID:</label>
+      <input type="text" id="channel_id" name="channel_id"><br>
+      <label for="api_key_channel">Enter API Key:</label>
+      <input type="text" id="api_key_channel" name="api_key_channel"><br>
+      <button type="submit">Fetch Comments by Channel ID</button>
+    </form>
+
+    <ul id="comments-list">
+      {% if comments %}
+      {% for comment in comments %}
+      <li class="comment">
+        <div class="user">
+          <!-- Actual user avatar should be displayed here -->
+          <img src="{{url_for('static',filename='pngegg.png')}}" >
+          {{ comment.user }}
+        </div>
+        <div class="text">{{ comment.text }}</div>
+      </li>
+      {% endfor %}
+      {% endif %}
+    </ul>
+  </div>
+</body>
+</html>
